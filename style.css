@@ -5,66 +5,138 @@
 body {
   margin: 0;
   font-family: Arial, sans-serif;
-  background: #0b0b0f;
+  background:
+    radial-gradient(circle at top left, rgba(0, 255, 136, 0.14), transparent 30%),
+    radial-gradient(circle at top right, rgba(0, 119, 255, 0.18), transparent 35%),
+    #07080d;
   color: white;
 }
 
-.topo {
+.hero {
+  padding: 70px 20px;
   text-align: center;
-  padding: 55px 20px;
-  background: linear-gradient(135deg, #00ff88, #0077ff);
+  background:
+    linear-gradient(135deg, rgba(0, 255, 136, 0.95), rgba(0, 119, 255, 0.95)),
+    #101018;
+  position: relative;
+  overflow: hidden;
 }
 
-.topo h1 {
+.hero::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at center, rgba(255,255,255,0.25), transparent 55%);
+  opacity: 0.35;
+}
+
+.hero-content {
+  position: relative;
+  z-index: 2;
+  max-width: 850px;
+  margin: auto;
+}
+
+.badge-topo {
+  display: inline-block;
+  background: rgba(0,0,0,0.25);
+  padding: 9px 16px;
+  border-radius: 999px;
+  font-weight: bold;
+  font-size: 14px;
+  margin-bottom: 18px;
+}
+
+.hero h1 {
   margin: 0;
-  font-size: 38px;
+  font-size: 44px;
+  line-height: 1.1;
 }
 
-.topo p {
-  margin-top: 12px;
-  font-size: 18px;
+.hero p {
+  font-size: 19px;
+  margin: 16px auto;
+  max-width: 680px;
+}
+
+.hero-info {
+  display: flex;
+  justify-content: center;
+  gap: 14px;
+  flex-wrap: wrap;
+  margin-top: 20px;
+}
+
+.hero-info span {
+  background: rgba(0,0,0,0.22);
+  padding: 10px 14px;
+  border-radius: 12px;
+  font-size: 14px;
+  font-weight: bold;
 }
 
 .container {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-  gap: 24px;
-  padding: 30px;
-  max-width: 1300px;
+  grid-template-columns: repeat(auto-fit, minmax(255px, 1fr));
+  gap: 26px;
+  padding: 38px 30px;
+  max-width: 1320px;
   margin: auto;
 }
 
 .card {
-  background: #171720;
-  padding: 28px 20px;
-  border-radius: 18px;
+  position: relative;
+  background: linear-gradient(180deg, #191923, #121219);
+  border: 1px solid rgba(255,255,255,0.06);
+  padding: 32px 22px 26px;
+  border-radius: 22px;
   text-align: center;
-  min-height: 320px;
-  box-shadow: 0 0 22px rgba(0, 255, 136, 0.09);
-  transition: 0.3s;
+  min-height: 345px;
+  box-shadow: 0 20px 45px rgba(0,0,0,0.25);
+  transition: 0.25s ease;
 }
 
 .card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 0 30px rgba(0, 255, 136, 0.22);
+  transform: translateY(-6px);
+  border-color: rgba(0,255,136,0.35);
+  box-shadow: 0 20px 55px rgba(0,255,136,0.14);
+}
+
+.card.destaque {
+  border: 1px solid rgba(0,255,136,0.55);
+  box-shadow: 0 0 35px rgba(0,255,136,0.12);
+}
+
+.selo {
+  position: absolute;
+  top: 14px;
+  left: 14px;
+  background: #00ff88;
+  color: #04110a;
+  font-size: 12px;
+  font-weight: bold;
+  padding: 7px 12px;
+  border-radius: 999px;
 }
 
 .card h2 {
   font-size: 26px;
-  margin: 25px 0 18px;
+  margin: 34px 0 16px;
 }
 
 .card p {
-  color: #ddd;
-  min-height: 45px;
+  color: #d8d8df;
   font-size: 16px;
+  min-height: 54px;
+  line-height: 1.35;
+  margin: 0;
 }
 
 .card strong {
   display: block;
-  font-size: 24px;
+  font-size: 26px;
   color: #00ff88;
-  margin: 18px 0;
+  margin: 22px 0;
 }
 
 .comprar,
@@ -72,44 +144,63 @@ body {
   display: block;
   width: 100%;
   border: none;
-  margin: 10px 0;
-  padding: 14px;
-  border-radius: 12px;
+  margin: 11px 0;
+  padding: 15px;
+  border-radius: 14px;
   font-size: 16px;
-  font-weight: bold;
+  font-weight: 800;
   text-decoration: none;
   cursor: pointer;
 }
 
 .comprar {
-  background: #00ff88;
-  color: #000;
+  background: linear-gradient(135deg, #00ff88, #00d96f);
+  color: #001006;
 }
 
 .whatsapp {
-  background: #25d366;
-  color: #fff;
+  background: rgba(37, 211, 102, 0.14);
+  color: #29ff84;
+  border: 1px solid rgba(37, 211, 102, 0.55);
 }
 
 .comprar:hover {
-  background: #00cc6a;
+  filter: brightness(0.95);
 }
 
 .whatsapp:hover {
-  background: #1ebd5a;
+  background: rgba(37, 211, 102, 0.22);
+}
+
+.suporte-fixo {
+  position: fixed;
+  right: 22px;
+  bottom: 22px;
+  background: #25d366;
+  color: white;
+  padding: 16px 22px;
+  border-radius: 999px;
+  text-decoration: none;
+  font-weight: bold;
+  box-shadow: 0 0 25px rgba(0,0,0,0.45);
+  z-index: 999;
 }
 
 @media (max-width: 600px) {
-  .topo h1 {
-    font-size: 29px;
+  .hero {
+    padding: 48px 18px;
   }
 
-  .topo {
-    padding: 42px 18px;
+  .hero h1 {
+    font-size: 31px;
+  }
+
+  .hero p {
+    font-size: 16px;
   }
 
   .container {
-    padding: 20px;
+    padding: 24px 18px;
   }
 
   .card {
