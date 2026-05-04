@@ -12,25 +12,10 @@ body {
   color: white;
 }
 
-/* LOGO */
-.header {
-  position: absolute;
-  top: 22px;
-  left: 32px;
-  z-index: 10;
-}
-
-.logo {
-  width: 58px;
-  filter: drop-shadow(0 0 14px #00ff88);
-}
-
-/* BANNER */
 .banner {
   text-align: center;
-  padding: 95px 20px 70px;
-  background:
-    linear-gradient(135deg, rgba(0,255,136,0.92), rgba(0,102,255,0.95));
+  padding: 55px 20px 70px;
+  background: linear-gradient(135deg, rgba(0,255,136,0.92), rgba(0,102,255,0.95));
   position: relative;
   overflow: hidden;
 }
@@ -38,13 +23,28 @@ body {
 .banner::after {
   content: "";
   position: absolute;
-  width: 500px;
-  height: 500px;
+  width: 520px;
+  height: 520px;
   background: rgba(255,255,255,0.18);
   border-radius: 50%;
-  top: -250px;
-  right: -120px;
-  filter: blur(20px);
+  top: -280px;
+  right: -140px;
+  filter: blur(22px);
+}
+
+.logo-banner {
+  position: relative;
+  z-index: 2;
+  width: 86px;
+  margin-bottom: 14px;
+  filter: drop-shadow(0 0 22px #00ff88);
+  animation: logoPulse 2.2s infinite;
+}
+
+@keyframes logoPulse {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.08); }
+  100% { transform: scale(1); }
 }
 
 .banner h1 {
@@ -82,7 +82,6 @@ body {
   backdrop-filter: blur(8px);
 }
 
-/* GRID */
 .cards {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
@@ -92,13 +91,11 @@ body {
   margin: auto;
 }
 
-/* CARD */
 .card {
   position: relative;
   min-height: 360px;
   padding: 34px 22px 26px;
-  background:
-    linear-gradient(180deg, rgba(27,27,39,0.95), rgba(14,15,23,0.98));
+  background: linear-gradient(180deg, rgba(27,27,39,0.95), rgba(14,15,23,0.98));
   border: 1px solid rgba(255,255,255,0.08);
   border-radius: 24px;
   text-align: center;
@@ -133,7 +130,6 @@ body {
   z-index: 2;
 }
 
-/* DESTAQUES */
 .card.destaque {
   border: 1px solid rgba(0,255,136,0.75);
   box-shadow:
@@ -155,7 +151,6 @@ body {
   box-shadow: 0 0 18px rgba(0,255,136,0.45);
 }
 
-/* TAG */
 .tag {
   display: inline-block;
   background: linear-gradient(135deg, #00ff88, #00d9ff);
@@ -167,7 +162,6 @@ body {
   margin-bottom: 20px;
 }
 
-/* TEXTOS */
 .card h2 {
   font-size: 27px;
   margin: 8px 0 16px;
@@ -189,7 +183,6 @@ body {
   text-shadow: 0 0 14px rgba(0,255,136,0.25);
 }
 
-/* BOTÕES */
 .btn,
 .btn2 {
   display: block;
@@ -227,7 +220,6 @@ body {
   content: "💬 ";
 }
 
-/* SUPORTE FIXO */
 .suporte-fixo {
   position: fixed;
   right: 22px;
@@ -247,19 +239,13 @@ body {
   transform: scale(1.07);
 }
 
-/* MOBILE */
 @media (max-width: 600px) {
-  .header {
-    top: 15px;
-    left: 18px;
-  }
-
-  .logo {
-    width: 46px;
+  .logo-banner {
+    width: 64px;
   }
 
   .banner {
-    padding: 80px 18px 48px;
+    padding: 40px 18px 48px;
   }
 
   .banner h1 {

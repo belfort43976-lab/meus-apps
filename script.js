@@ -1,53 +1,35 @@
-// =========================
-// TRACKING PIXEL (EVENTOS)
-// =========================
-
-// BOTÕES DE COMPRA
-document.querySelectorAll('.btn').forEach(botao => {
-  botao.addEventListener('click', () => {
+document.querySelectorAll(".btn").forEach(btn => {
+  btn.addEventListener("click", function () {
+    const app = this.closest(".card").querySelector("h2").innerText;
 
     if (typeof fbq !== "undefined") {
-      fbq('track', 'InitiateCheckout');
+      fbq("track", "InitiateCheckout", {
+        content_name: app
+      });
     }
-
-    console.log('Clique em comprar');
   });
 });
 
-// BOTÕES DE SUPORTE
-document.querySelectorAll('.btn2').forEach(botao => {
-  botao.addEventListener('click', () => {
+document.querySelectorAll(".suporte").forEach(btn => {
+  btn.addEventListener("click", function () {
+    const app = this.dataset.app || "Suporte";
 
     if (typeof fbq !== "undefined") {
-      fbq('track', 'Contact');
+      fbq("track", "Contact", {
+        content_name: app
+      });
     }
-
-    console.log('Clique no suporte');
   });
 });
 
+const suporteFixo = document.getElementById("suporteFixo");
 
-// =========================
-// EFEITO VISUAL NOS BOTÕES
-// =========================
-
-const botoes = document.querySelectorAll('.btn');
-
-botoes.forEach(btn => {
-  btn.addEventListener('mouseenter', () => {
-    btn.style.transform = "scale(1.05)";
-    btn.style.boxShadow = "0 0 20px #00ff88";
+if (suporteFixo) {
+  suporteFixo.addEventListener("click", function () {
+    if (typeof fbq !== "undefined") {
+      fbq("track", "Contact", {
+        content_name: "Suporte Geral"
+      });
+    }
   });
-
-  btn.addEventListener('mouseleave', () => {
-    btn.style.transform = "scale(1)";
-    btn.style.boxShadow = "none";
-  });
-});
-
-
-// =========================
-// LOG DE INICIALIZAÇÃO
-// =========================
-
-console.log("🔥 Script carregado e funcionando");
+}
