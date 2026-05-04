@@ -1,98 +1,284 @@
+* {
+  box-sizing: border-box;
+}
+
 body {
   margin: 0;
   font-family: Arial, sans-serif;
-  background: #05080f;
+  background:
+    radial-gradient(circle at top left, rgba(0,255,136,0.18), transparent 28%),
+    radial-gradient(circle at top right, rgba(0,119,255,0.22), transparent 30%),
+    #05070d;
   color: white;
 }
 
 /* LOGO */
 .header {
   position: absolute;
-  top: 20px;
-  left: 30px;
+  top: 22px;
+  left: 32px;
+  z-index: 10;
 }
 
 .logo {
-  width: 50px;
-  filter: drop-shadow(0 0 10px #00ff88);
+  width: 58px;
+  filter: drop-shadow(0 0 14px #00ff88);
 }
 
 /* BANNER */
 .banner {
   text-align: center;
-  padding: 120px 20px 60px;
-  background: linear-gradient(90deg,#00c9a7,#0066ff);
+  padding: 95px 20px 70px;
+  background:
+    linear-gradient(135deg, rgba(0,255,136,0.92), rgba(0,102,255,0.95));
+  position: relative;
+  overflow: hidden;
+}
+
+.banner::after {
+  content: "";
+  position: absolute;
+  width: 500px;
+  height: 500px;
+  background: rgba(255,255,255,0.18);
+  border-radius: 50%;
+  top: -250px;
+  right: -120px;
+  filter: blur(20px);
 }
 
 .banner h1 {
-  font-size: 40px;
+  position: relative;
+  z-index: 2;
+  margin: 0;
+  font-size: 46px;
+  font-weight: 900;
 }
 
 .banner p {
-  opacity: 0.9;
+  position: relative;
+  z-index: 2;
+  max-width: 760px;
+  margin: 18px auto;
+  font-size: 18px;
+}
+
+.badges {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  justify-content: center;
+  gap: 14px;
+  flex-wrap: wrap;
+  margin-top: 22px;
 }
 
 .badges span {
-  margin: 10px;
-  padding: 8px 15px;
-  background: rgba(0,0,0,0.2);
-  border-radius: 20px;
-}
-
-/* CARDS */
-.cards {
-  display: flex;
-  justify-content: center;
-  gap: 20px;
-  padding: 40px;
-  flex-wrap: wrap;
-}
-
-.card {
-  background: #0d1117;
-  padding: 25px;
-  border-radius: 15px;
-  width: 260px;
-  text-align: center;
-  border: 1px solid #1f2937;
-}
-
-.card h2 {
-  margin: 10px 0;
-}
-
-.preco {
-  color: #00ff88;
-  font-size: 22px;
-  margin: 10px 0;
-}
-
-/* BOTÕES */
-.btn {
-  display: block;
-  background: #00ff88;
-  color: black;
-  padding: 12px;
-  margin: 10px 0;
-  border-radius: 10px;
-  text-decoration: none;
+  padding: 10px 17px;
+  background: rgba(0,0,0,0.25);
+  border-radius: 999px;
+  font-size: 14px;
   font-weight: bold;
+  backdrop-filter: blur(8px);
 }
 
-.btn2 {
-  display: block;
-  background: #1f2937;
-  color: white;
-  padding: 10px;
-  border-radius: 10px;
-  text-decoration: none;
+/* GRID */
+.cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 28px;
+  padding: 42px 32px;
+  max-width: 1320px;
+  margin: auto;
+}
+
+/* CARD */
+.card {
+  position: relative;
+  min-height: 360px;
+  padding: 34px 22px 26px;
+  background:
+    linear-gradient(180deg, rgba(27,27,39,0.95), rgba(14,15,23,0.98));
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 24px;
+  text-align: center;
+  box-shadow: 0 20px 45px rgba(0,0,0,0.35);
+  transition: all 0.28s ease;
+  overflow: hidden;
+}
+
+.card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, rgba(0,255,136,0.16), rgba(0,102,255,0.10));
+  opacity: 0;
+  transition: 0.28s;
+}
+
+.card:hover {
+  transform: translateY(-10px) scale(1.02);
+  border-color: rgba(0,255,136,0.65);
+  box-shadow:
+    0 0 0 1px rgba(0,255,136,0.25),
+    0 25px 65px rgba(0,255,136,0.18);
+}
+
+.card:hover::before {
+  opacity: 1;
+}
+
+.card > * {
+  position: relative;
+  z-index: 2;
+}
+
+/* DESTAQUES */
+.card.destaque {
+  border: 1px solid rgba(0,255,136,0.75);
+  box-shadow:
+    0 0 22px rgba(0,255,136,0.16),
+    0 20px 55px rgba(0,0,0,0.35);
+}
+
+.card.destaque::after {
+  content: "🔥 MAIS ESCOLHIDO";
+  position: absolute;
+  top: 18px;
+  right: -42px;
+  background: #00ff88;
+  color: #001006;
+  font-size: 11px;
+  font-weight: 900;
+  padding: 8px 42px;
+  transform: rotate(38deg);
+  box-shadow: 0 0 18px rgba(0,255,136,0.45);
 }
 
 /* TAG */
 .tag {
-  background: #00ff88;
-  color: black;
-  padding: 5px 10px;
-  border-radius: 10px;
+  display: inline-block;
+  background: linear-gradient(135deg, #00ff88, #00d9ff);
+  color: #001006;
+  padding: 8px 14px;
+  border-radius: 999px;
   font-size: 12px;
+  font-weight: 900;
+  margin-bottom: 20px;
+}
+
+/* TEXTOS */
+.card h2 {
+  font-size: 27px;
+  margin: 8px 0 16px;
+}
+
+.card p {
+  color: #d9d9e4;
+  font-size: 16px;
+  line-height: 1.38;
+  min-height: 58px;
+  margin: 0;
+}
+
+.preco {
+  color: #00ff88;
+  font-size: 28px;
+  font-weight: 900;
+  margin: 24px 0;
+  text-shadow: 0 0 14px rgba(0,255,136,0.25);
+}
+
+/* BOTÕES */
+.btn,
+.btn2 {
+  display: block;
+  width: 100%;
+  border: none;
+  margin: 12px 0;
+  padding: 15px;
+  border-radius: 15px;
+  text-decoration: none;
+  font-size: 16px;
+  font-weight: 900;
+  cursor: pointer;
+  transition: 0.22s ease;
+}
+
+.btn {
+  background: linear-gradient(135deg, #00ff88, #00c96b);
+  color: #001006;
+  box-shadow: 0 10px 25px rgba(0,255,136,0.22);
+}
+
+.btn2 {
+  background: linear-gradient(135deg, #25d366, #00b95f);
+  color: white;
+  box-shadow: 0 10px 25px rgba(37,211,102,0.22);
+}
+
+.btn:hover,
+.btn2:hover {
+  transform: scale(1.04);
+  filter: brightness(1.06);
+}
+
+.btn2::before {
+  content: "💬 ";
+}
+
+/* SUPORTE FIXO */
+.suporte-fixo {
+  position: fixed;
+  right: 22px;
+  bottom: 22px;
+  background: linear-gradient(135deg, #25d366, #00b95f);
+  color: white;
+  padding: 17px 24px;
+  border-radius: 999px;
+  text-decoration: none;
+  font-weight: 900;
+  box-shadow: 0 0 28px rgba(37,211,102,0.45);
+  z-index: 999;
+  transition: 0.25s;
+}
+
+.suporte-fixo:hover {
+  transform: scale(1.07);
+}
+
+/* MOBILE */
+@media (max-width: 600px) {
+  .header {
+    top: 15px;
+    left: 18px;
+  }
+
+  .logo {
+    width: 46px;
+  }
+
+  .banner {
+    padding: 80px 18px 48px;
+  }
+
+  .banner h1 {
+    font-size: 32px;
+  }
+
+  .banner p {
+    font-size: 16px;
+  }
+
+  .cards {
+    padding: 26px 18px;
+  }
+
+  .card {
+    min-height: auto;
+  }
+
+  .card.destaque::after {
+    display: none;
+  }
 }
