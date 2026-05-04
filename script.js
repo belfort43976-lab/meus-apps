@@ -14,7 +14,7 @@ document.querySelectorAll(".whatsapp").forEach(botao => {
 
     if (typeof fbq !== "undefined") {
       fbq("track", "Contact", {
-        app: app
+        content_name: app
       });
     }
   });
@@ -26,8 +26,8 @@ document.querySelectorAll(".comprar").forEach(botao => {
     const app = card.querySelector("h2").innerText;
 
     if (typeof fbq !== "undefined") {
-      fbq("track", "Lead", {
-        app: app
+      fbq("track", "InitiateCheckout", {
+        content_name: app
       });
     }
   });
@@ -44,6 +44,8 @@ document.getElementById("suporteFixo").addEventListener("click", function (e) {
   );
 
   if (typeof fbq !== "undefined") {
-    fbq("track", "Contact");
+    fbq("track", "Contact", {
+      content_name: "Suporte Geral"
+    });
   }
 });
