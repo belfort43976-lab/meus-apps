@@ -1,16 +1,11 @@
 const numero = "5567998978482";
 
-document.querySelectorAll(".whatsapp").forEach(botao => {
-  botao.addEventListener("click", function (e) {
-    e.preventDefault();
+document.querySelectorAll(".whatsapp").forEach(btn => {
+  btn.addEventListener("click", function () {
+    const app = this.dataset.app;
+    const msg = `Olá, quero comprar ${app}`;
 
-    const app = this.getAttribute("data-app");
-    const mensagem = `Olá, quero garantir meu acesso ao ${app} agora!`;
-
-    window.open(
-      `https://wa.me/${numero}?text=${encodeURIComponent(mensagem)}`,
-      "_blank"
-    );
+    window.open(`https://wa.me/${numero}?text=${encodeURIComponent(msg)}`, "_blank");
 
     if (typeof fbq !== "undefined") {
       fbq("track", "Contact", {
@@ -20,10 +15,9 @@ document.querySelectorAll(".whatsapp").forEach(botao => {
   });
 });
 
-document.querySelectorAll(".comprar").forEach(botao => {
-  botao.addEventListener("click", function () {
-    const card = this.closest(".card");
-    const app = card.querySelector("h2").innerText;
+document.querySelectorAll(".comprar").forEach(btn => {
+  btn.addEventListener("click", function () {
+    const app = this.closest(".card").querySelector("h2").innerText;
 
     if (typeof fbq !== "undefined") {
       fbq("track", "InitiateCheckout", {
@@ -31,21 +25,4 @@ document.querySelectorAll(".comprar").forEach(botao => {
       });
     }
   });
-});
-
-document.getElementById("suporteFixo").addEventListener("click", function (e) {
-  e.preventDefault();
-
-  const mensagem = "Olá, preciso de suporte para escolher um app.";
-
-  window.open(
-    `https://wa.me/${numero}?text=${encodeURIComponent(mensagem)}`,
-    "_blank"
-  );
-
-  if (typeof fbq !== "undefined") {
-    fbq("track", "Contact", {
-      content_name: "Suporte Geral"
-    });
-  }
 });
