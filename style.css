@@ -1,0 +1,164 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background: #0b0b0f;
+  color: white;
+}
+
+.topo {
+  text-align: center;
+  padding: 55px 20px;
+  background: linear-gradient(135deg, #00ff88, #0077ff);
+}
+
+.topo h1 {
+  margin: 0;
+  font-size: 38px;
+}
+
+.topo p {
+  margin: 10px 0 0;
+  font-size: 18px;
+}
+
+.urgencia {
+  color: #fff700;
+  font-weight: bold;
+}
+
+.prova {
+  color: white;
+  font-size: 15px;
+  font-weight: bold;
+}
+
+.container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 24px;
+  padding: 30px;
+  max-width: 1300px;
+  margin: auto;
+}
+
+.card {
+  position: relative;
+  background: #171720;
+  padding: 28px 20px;
+  border-radius: 18px;
+  text-align: center;
+  min-height: 330px;
+  box-shadow: 0 0 20px rgba(0, 255, 136, 0.08);
+  transition: 0.3s;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 0 28px rgba(0, 255, 136, 0.22);
+}
+
+.card h2 {
+  font-size: 25px;
+  margin-top: 22px;
+  margin-bottom: 18px;
+}
+
+.descricao {
+  color: #ddd;
+  min-height: 48px;
+  font-size: 16px;
+}
+
+.preco {
+  font-size: 23px;
+  font-weight: bold;
+  margin: 18px 0;
+  color: #00ff88;
+}
+
+.antes {
+  color: #888;
+  text-decoration: line-through;
+  font-size: 15px;
+  margin-right: 6px;
+}
+
+.botao {
+  display: block;
+  margin: 10px 0;
+  padding: 14px;
+  border-radius: 12px;
+  text-decoration: none;
+  font-weight: bold;
+  transition: 0.2s;
+}
+
+.comprar {
+  background: #00ff88;
+  color: black;
+}
+
+.comprar:hover {
+  background: #00cc6a;
+}
+
+.whatsapp {
+  background: #25d366;
+  color: white;
+}
+
+.whatsapp:hover {
+  background: #1ebd5a;
+}
+
+.selo {
+  position: absolute;
+  top: 14px;
+  left: 14px;
+  background: #00ff88;
+  color: black;
+  font-size: 12px;
+  font-weight: bold;
+  padding: 7px 11px;
+  border-radius: 30px;
+}
+
+.destaque {
+  border: 1px solid rgba(0, 255, 136, 0.5);
+}
+
+.suporte-fixo {
+  position: fixed;
+  right: 20px;
+  bottom: 20px;
+  background: #25d366;
+  color: white;
+  padding: 16px 22px;
+  border-radius: 50px;
+  text-decoration: none;
+  font-weight: bold;
+  box-shadow: 0 0 20px rgba(0,0,0,0.4);
+  z-index: 999;
+}
+
+@media (max-width: 600px) {
+  .topo h1 {
+    font-size: 29px;
+  }
+
+  .topo {
+    padding: 42px 18px;
+  }
+
+  .container {
+    padding: 20px;
+  }
+
+  .card {
+    min-height: auto;
+  }
+}
