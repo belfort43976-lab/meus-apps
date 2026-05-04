@@ -1,42 +1,53 @@
-const numero = "5567998978482";
+// =========================
+// TRACKING PIXEL (EVENTOS)
+// =========================
 
-document.querySelectorAll(".whatsapp").forEach(btn => {
-  btn.addEventListener("click", function () {
-    const app = this.dataset.app;
-    const msg = `Olá, quero falar com o suporte sobre ${app}`;
-
-    window.open(`https://wa.me/${numero}?text=${encodeURIComponent(msg)}`, "_blank");
+// BOTÕES DE COMPRA
+document.querySelectorAll('.btn').forEach(botao => {
+  botao.addEventListener('click', () => {
 
     if (typeof fbq !== "undefined") {
-      fbq("track", "Contact", {
-        content_name: app
-      });
+      fbq('track', 'InitiateCheckout');
     }
+
+    console.log('Clique em comprar');
   });
 });
 
-document.querySelectorAll(".comprar").forEach(btn => {
-  btn.addEventListener("click", function () {
-    const app = this.closest(".card").querySelector("h2").innerText;
+// BOTÕES DE SUPORTE
+document.querySelectorAll('.btn2').forEach(botao => {
+  botao.addEventListener('click', () => {
 
     if (typeof fbq !== "undefined") {
-      fbq("track", "InitiateCheckout", {
-        content_name: app
-      });
+      fbq('track', 'Contact');
     }
+
+    console.log('Clique no suporte');
   });
 });
 
-document.getElementById("suporteFixo").addEventListener("click", function (e) {
-  e.preventDefault();
 
-  const msg = "Olá, preciso de ajuda para escolher um app premium.";
+// =========================
+// EFEITO VISUAL NOS BOTÕES
+// =========================
 
-  window.open(`https://wa.me/${numero}?text=${encodeURIComponent(msg)}`, "_blank");
+const botoes = document.querySelectorAll('.btn');
 
-  if (typeof fbq !== "undefined") {
-    fbq("track", "Contact", {
-      content_name: "Suporte Geral"
-    });
-  }
+botoes.forEach(btn => {
+  btn.addEventListener('mouseenter', () => {
+    btn.style.transform = "scale(1.05)";
+    btn.style.boxShadow = "0 0 20px #00ff88";
+  });
+
+  btn.addEventListener('mouseleave', () => {
+    btn.style.transform = "scale(1)";
+    btn.style.boxShadow = "none";
+  });
 });
+
+
+// =========================
+// LOG DE INICIALIZAÇÃO
+// =========================
+
+console.log("🔥 Script carregado e funcionando");
